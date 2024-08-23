@@ -12,10 +12,15 @@ public class Main {
             public void run() {
                 // código que será executado com uma nova thread
                 System.out.println("Estamos em thread: " + Thread.currentThread().getName());
+                System.out.println("Prioridade da thread atual: " + Thread.currentThread().getPriority());
 
             }
         });
 
+        thread.setName("Nova Thread");
+        
+        thread.setPriority(Thread.MAX_PRIORITY);
+        
         System.out.println("Estamos em um thread: "
                 + Thread.currentThread().getName() + " antes de iniciar uma nova thread");
         thread.start();
