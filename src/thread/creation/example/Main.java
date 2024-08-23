@@ -7,30 +7,17 @@ package thread.creation.example;
 public class Main {
 
     public static void main(String[] args) {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // código que será executado com uma nova thread
-                System.out.println("Estamos em thread: " + Thread.currentThread().getName());
-                System.out.println("Prioridade da thread atual: " + Thread.currentThread().getPriority());
-
-            }
-        });
-
-        thread.setName("Nova Thread");
         
-        thread.setPriority(Thread.MAX_PRIORITY);
+        Thread thread = new NovaThread();
         
-        System.out.println("Estamos em um thread: "
-                + Thread.currentThread().getName() + " antes de iniciar uma nova thread");
         thread.start();
-        System.out.println("Estamos em um thread: "
-                + Thread.currentThread().getName() + " após finalizar uma nova thread");
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException ex) {
-            System.out.println("Erro em " + Thread.currentThread().getName() + ": " + ex);
+    }
+    
+    private static class NovaThread extends Thread {
+        @Override
+        public void run() {
+            // código que será executado na nova thread
+            System.out.println("Estamos em thread: " + Thread.currentThread().getName()); 
         }
     }
 }
