@@ -7,15 +7,16 @@ package thread.creation.example2;
 public class Main {
 
     public static void main(String[] args) {
-
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // código que executa uma nova thread
-                System.out.println("Hello world from " + Thread.currentThread().getName());
-            }
-        });
-
+        Thread thread = new NovaThread();
         thread.start();
+
+    }
+
+    private static class NovaThread extends Thread {
+
+        @Override
+        public void run() {
+            System.out.println("Hello world from " + this.getName());
+        }
     }
 }
